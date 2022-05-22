@@ -1,46 +1,104 @@
 import java.io.*;
+
+/**
+ *
+ * Javafinal es un código que ejecutará una calculadora, la cual primero pedirá la cantidad
+ * de número que van a ser utilizados para poco después preguntar que ecuación desea hacer el usuario.
+ * Una vez elegida la ecuación, los números introducidos serán utilizados para definir la respuesta final
+ * de la ecuación.
+ *
+ * @author Luis Alfonso Pacheco Madera
+ *
+ */
 public class javafinal {
 
-    private static double division;
+    /**
+     * Variable encargada de aumentarse dentro de los ciclos for
+     */
     private static int i;
+
+    /**
+     * Las 5 variables inferiores son utilizadas para almacenar el resultado de las ecuaciones;
+     * Cada uno para su respectiva ecuación.
+     */
+    private static double division;
     private static double modulacion;
     private static double multiplicacion;
-    private static int opcion;
     private static double resta;
     private static double suma;
+
+    /**
+     * Variable encargada de guardar el número elegido por el usuario, dicho número ejecutará ciertos
+     * case en Switch
+     */
+    private static int opcion;
+    /**
+     *Número encargado de darle tamaño al arreglo que almacenará los números dados por el usuario(num).
+     */
     private static int tamanio;
 
 
-
+    /**
+     * Utilizando las variables privadas, este ejecutará distintos métodos para conseguir la información
+     * necesaria para llevar a cabo sus funciones.
+     * @param args
+     * @throws IOException
+     */
     public static void main(String args[]) throws IOException {
 
+        /**
+         * Utilizado para invocar el método para la lectura de datos por consola
+         */
         BufferedReader bufEntrada = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("¿Cuantos números vas a utilizar?");
+
+        /**
+         * Recibimos que tamaño quiere el usuario para el arreglo y le asignamos dicho valor
+         */
         tamanio = Integer.parseInt(bufEntrada.readLine());
         double[] num = new double[tamanio];
 
+        /**
+         * Asignamos un valor de 0 a las variables para reiniciarlas en caso de que tengan datos de
+         * anteriores ejecuciones
+         */
         suma = 0;
         resta = 0;
         multiplicacion = 0;
         division = 0;
         modulacion = 0;
 
-        //
-
+        /**
+         * Un pequeño menú para preguntar al usuario que desea hacer
+         */
         System.out.println("¿Que quieres hacer?");
         System.out.println("1: Sumar");
         System.out.println("2: Restar");
         System.out.println("3: Multiplicar");
         System.out.println("4: Dividir");
         System.out.println("5: Modular");
+
+        /**
+         * Leemos la opcion del usuario y la guardamos en la variable opción.
+         * Cada una de las elecciones ejecutará una caso u otro
+         */
         opcion = Integer.parseInt(bufEntrada.readLine());
         switch (opcion) {
+
+            /**
+             * Cada caso ejecuta su ecuación correspondiente, moviendose por el arreglo y efectuando
+             * su cálculo con cada uno de ellos.
+             */
             case 1:
-                System.out.println("Digite los n�meros a sumar");
+
+                System.out.println("Digite los números a sumar");
                 for (i=0;i<=tamanio-1;i++) {
                     num[i] = Double.parseDouble(bufEntrada.readLine());
                     suma = suma+num[i];
                 }
+                /**
+                 * Imprime el resultado final.
+                 */
                 System.out.println("El resultado de la suma total es: "+suma);
                 break;
             case 2:
